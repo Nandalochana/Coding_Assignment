@@ -30,6 +30,9 @@ public class CountryControllerTest {
 
     private Country country;
 
+    public CountryControllerTest() {
+    }
+
     @BeforeEach
     public void setup() {
         country = new Country();
@@ -48,7 +51,6 @@ public class CountryControllerTest {
     @WithMockUser(roles = "ADMIN")
     public void getAllCountries() throws Exception {
         Mockito.when(countryService.getAllCountries()).thenReturn(Collections.singletonList(country));
-
         mockMvc.perform(get("/countries/")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -60,7 +62,6 @@ public class CountryControllerTest {
     @WithMockUser(roles = "ADMIN")
     public void getCountryByName_ReturnsCountryDetails() throws Exception {
         Mockito.when(countryService.getCountryByName(anyString())).thenReturn(country);
-
         mockMvc.perform(get("/countries/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
