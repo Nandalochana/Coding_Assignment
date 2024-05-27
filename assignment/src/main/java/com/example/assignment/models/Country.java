@@ -1,14 +1,11 @@
 package com.example.assignment.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class BaseCountries {
+public class Country {
     private Name name;
-    private String cca2;
+    private String countryCode;
     private String[] capital;
     private long population;
     private Flags flags;
