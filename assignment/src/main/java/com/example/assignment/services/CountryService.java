@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,9 +25,13 @@ public class CountryService implements CountryServiceProviders {
     @Override
     public List<Country> getAllCountries() {
         Country[] countries = restTemplate.getForObject(API_URL, Country[].class);
-        return Arrays.stream(countries)
-                .map(this::convertToCountry)
-                .collect(Collectors.toList());
+        if (countries != null) {
+            return Arrays.stream(countries)
+                    .map(this::convertToCountry)
+                    .collect(Collectors.toList());
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.example.assignment.controller;
 
 import com.example.assignment.models.Country;
+import com.example.assignment.models.CountryResponse;
 import com.example.assignment.services.CountryService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,14 +40,5 @@ public class CountryController {
         response.setPopulation(country.getPopulation());
         response.setFlagFileUrl(country.getFlags().getSvg());
         return response;
-    }
-
-    @Data
-    public static class CountryResponse {
-        private String name;
-        private String countryCode;
-        private String capital;
-        private long population;
-        private String flagFileUrl;
     }
 }
