@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
@@ -44,6 +45,7 @@ public class CountryControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     public void getAllCountries() throws Exception {
         Mockito.when(countryService.getAllCountries()).thenReturn(Collections.singletonList(country));
 
@@ -55,6 +57,7 @@ public class CountryControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     public void getCountryByName_ReturnsCountryDetails() throws Exception {
         Mockito.when(countryService.getCountryByName(anyString())).thenReturn(country);
 
