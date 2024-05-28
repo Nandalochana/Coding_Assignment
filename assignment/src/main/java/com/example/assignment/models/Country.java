@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Country {
     private Name name;
-    private String countryCode;
+    private String cca2;
     private String[] capital;
     private long population;
     private Flags flags;
