@@ -1,28 +1,16 @@
 package com.example.assignment.services;
 
-
 import com.example.assignment.models.Country;
 import com.example.assignment.serviceProviders.CountryServiceProviders;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.asm.TypeReference;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.beans.factory.annotation.Value;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.UnknownHostException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -35,31 +23,30 @@ public class CountryService implements CountryServiceProviders {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
-    public List<Country> getAllCountries() {
-        String url = apiUrl + "/all";
-        log.info("Fetch Country under url :" + url);
-        Country[] countries = restTemplate.getForObject(url, Country[].class);
-        if (countries != null) {
-            log.info("Results Found");
-            return Arrays.asList(countries);
-        }
-        else {
-            log.info("Empty Results Found");
-            return new ArrayList<>();
-        }
+    public Flux<Country> getAllCountries() {
+        return Mono.fromCallable(() -> {
+            String url = apiUrl + "/all";
+            log.info("Fetch Url :" + url);
+            Country[] countries = restTemplate.getForObject(url.trim(), Country[].class);
+            log.info("Found Result :" + (countries != null ? countries.length : "0"));
+            return countries != null ? Arrays.asList(countries) : new ArrayList<Country>();
+        }).flatMapMany(Flux::fromIterable);
     }
 
     @Override
-    public Country getCountryByName(String name) {
+    public Mono<Country> getCountryByName(String name) {
         String url = apiUrl + "/name/" + name;
-        Country[] countries = restTemplate.getForObject(url, Country[].class);
-        if (countries != null && countries.length > 0) {
-            log.info("Results Found");
-            return countries[0];
-        }
-        else {
-            log.info("Empty Results Found");
-            return null;
-        }
+        log.info("Fetch Url :" + url);
+        return Mono.fromCallable(() -> {
+            Country[] countries = restTemplate.getForObject(url.trim(), Country[].class);
+            if (countries != null && countries.length > 0) {
+                Country country = countries[0];
+                log.info("Found Result :" + country.toString());
+                return country;
+            } else {
+                log.info("No Result Found");
+                return null;
+            }
+        }).flatMap(Mono::justOrEmpty);
     }
 }

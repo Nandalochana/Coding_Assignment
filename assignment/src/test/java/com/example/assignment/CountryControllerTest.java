@@ -12,6 +12,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 
@@ -50,7 +52,7 @@ public class CountryControllerTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     public void getAllCountries() throws Exception {
-        Mockito.when(countryService.getAllCountries()).thenReturn(Collections.singletonList(country));
+        Mockito.when(countryService.getAllCountries()).thenReturn(Flux.just(country));
         mockMvc.perform(get("/countries/")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -61,7 +63,7 @@ public class CountryControllerTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     public void getCountryByName_ReturnsCountryDetails() throws Exception {
-        Mockito.when(countryService.getCountryByName(anyString())).thenReturn(country);
+        Mockito.when(countryService.getCountryByName(Mockito.anyString())).thenReturn(Mono.just(country));
         mockMvc.perform(get("/countries/Finland")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

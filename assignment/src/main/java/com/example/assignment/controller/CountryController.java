@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
@@ -22,18 +21,17 @@ public class CountryController {
     private CountryService countryService;
 
     @GetMapping("/")
-    public List<CountryResponse> getAllCountries() {
+    public Flux<CountryResponse> getAllCountries() {
         log.info("Fetching all countries");
-        return countryService.getAllCountries().stream()
-                .map(this::convertToCountryResponse)
-                .collect(Collectors.toList());
+        return countryService.getAllCountries()
+                .map(this::convertToCountryResponse);
     }
 
     @GetMapping("/{name}")
-    public CountryResponse getCountryByName(@PathVariable String name) {
+    public Mono<CountryResponse> getCountryByName(@PathVariable String name) {
         log.info("Fetching country details under giving name :"+ name);
-        Country country = countryService.getCountryByName(name);
-        return convertToCountryResponse(country);
+        return countryService.getCountryByName(name)
+                .map(this::convertToCountryResponse);
     }
 
     private CountryResponse convertToCountryResponse(Country country) {
