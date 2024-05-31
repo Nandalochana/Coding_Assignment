@@ -62,7 +62,7 @@ public class CountryController {
         response.setCountryCode(country.getCca2());
         response.setCapital(country.getCapital() != null && country.getCapital().length > 0 ? country.getCapital()[0] : null);
         response.setPopulation(country.getPopulation());
-        response.setFlagFileUrl(country.getFlags().getSvg());
+        response.setFlagFileUrl(country.getFlags().getPng());// Here, I only consider png format only
         return response;
     }
 }
