@@ -2,6 +2,10 @@ package com.example.assignment.models;
 
 import lombok.Data;
 
+/**
+ * Author : Danushka Nanda Lochana
+ * Description : This class holds the Country information
+ */
 @Data
 public class Country {
     private Name name;

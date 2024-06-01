@@ -15,12 +15,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Collections;
-
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Author : Danushka Nanda Lochana
+ * Description : Main test class for test county APIs
+ */
 @WebMvcTest(CountryController.class)
 public class CountryControllerTest {
 
@@ -41,7 +43,7 @@ public class CountryControllerTest {
         Country.Name name = new Country.Name();
         name.setCommon("Finland");
         country.setName(name);
-        country.setCountryCode("FI");
+        country.setCca2("FI");
         country.setCapital(new String[]{"Helsinki"});
         country.setPopulation(5491817);
         Country.Flags flags = new Country.Flags();

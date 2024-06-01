@@ -57,12 +57,8 @@ public class CountryController {
      * @return CountryResponse
      */
     private CountryResponse convertToCountryResponse(Country country) {
-        CountryResponse response = new CountryResponse();
-        response.setName(country.getName().getCommon());
-        response.setCountryCode(country.getCca2());
-        response.setCapital(country.getCapital() != null && country.getCapital().length > 0 ? country.getCapital()[0] : null);
-        response.setPopulation(country.getPopulation());
-        response.setFlagFileUrl(country.getFlags().getPng());// Here, I only consider png format only
-        return response;
+        return new CountryResponse(country.getName().getCommon(), country.getCca2(),
+                country.getCapital() != null && country.getCapital().length > 0 ? country.getCapital()[0] : null,
+                country.getPopulation(), country.getFlags().getPng());
     }
 }
