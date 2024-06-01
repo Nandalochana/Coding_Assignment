@@ -1,0 +1,17 @@
+.country-list {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.country-list li {
+    margin: 5px 0; /* Add some margin */
+}
+
+.country-list a {
+    text-decoration: none; /* Remove underline from links */
+    color: blue; /* Set link color */
+}
+
+.country-list a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
