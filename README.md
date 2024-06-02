@@ -1,5 +1,4 @@
 
-![Logo](./extra/img.png)
 
 # Country Information Microservice
 
@@ -41,8 +40,9 @@ Once the application is running, you can access the REST API endpoints:
 
 
 - List all countries               : http://localhost:8080/countries/
+ ![Logo](./extra/img1.png)
 - Get details of a specific country: http://localhost:8080/countries/{name}
-
+![Logo](./extra/img2.png)
 
 # Testing
 
