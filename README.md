@@ -37,8 +37,8 @@ Run the application: `mvn spring-boot:run`
 Once the application is running, you can access the REST API endpoints:
 
 
-List all countries               : http://localhost:8080/countries/
-Get details of a specific country: http://localhost:8080/countries/{name}
+- List all countries               : http://localhost:8080/countries/
+- Get details of a specific country: http://localhost:8080/countries/{name}
 
 
 # Testing
