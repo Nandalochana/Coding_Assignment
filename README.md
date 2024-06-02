@@ -55,7 +55,7 @@ A separate web application is included in the repository. To run the web applica
 
 **Navigate to the web application directory:**
 
-- cd react-CA
+- cd react-CA/clientview
 
 **Install dependencies and start the application:**
 
