@@ -1,3 +1,6 @@
+
+![Logo](./extra/img.png)
+
 # Country Information Microservice
 
 This project implements a microservice that provides a list of countries and detailed information for each country. The microservice is built using Spring Boot and follows best practices for microservice architecture.
