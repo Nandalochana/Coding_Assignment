@@ -25,8 +25,69 @@ This project implements a microservice that provides a list of countries and det
 ### Installation
 
 1. **Clone the repository**:
-   ```sh
    git clone https://github.com/Nandalochana/Coding_Assignment.git
    cd Coding_Assignment/assignment
+
+
+Build the project  : `mvn clean install`
+Run the application: `mvn spring-boot:run`
+
+# Usage
+
+Once the application is running, you can access the REST API endpoints:
+
+
+List all countries               : http://localhost:8080/countries/
+Get details of a specific country: http://localhost:8080/countries/{name}
+
+
+# Testing
+
+The implementation includes tests that can be run with Maven:
+
+- mvn test
+
+
+# Web Application
+
+
+A separate web application is included in the repository. To run the web application:
+
+**Navigate to the web application directory:**
+
+- cd react-CA
+
+**Install dependencies and start the application:**
+
+- npm install
+- npm start
+
+
+**Open your browser and go to http://localhost:3000 to see the country information displayed.**
+
+
+# Contact
+For any inquiries or feedback, please contact danushkanandalochana@gmail.com.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
