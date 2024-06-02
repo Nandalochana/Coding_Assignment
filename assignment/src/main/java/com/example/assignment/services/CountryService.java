@@ -29,7 +29,7 @@ public class CountryService implements CountryServiceProviders {
     @Override
     public Flux<Country> getAllCountries() {
         return Mono.fromCallable(() -> {
-            Country[] countries = null;
+            Country[] countries;
             String url = apiUrl + "/all";
             try {
                 log.info("Fetch Url :" + url);
