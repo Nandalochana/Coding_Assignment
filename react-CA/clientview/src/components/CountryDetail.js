@@ -25,7 +25,7 @@ const CountryDetail = ({ countryName }) => {
             {country ? (
                 <div>
                     <h2>{country.name}</h2>
-                    <p>Country Code: {country.country_code}</p>
+                    <p>Country Code: {country.countryCode}</p>
                     <p>Capital: {country.capital}</p>
                     <p>Population: {country.population}</p>
                     <img src={`${country.flagFileUrl}`} alt={`${country.name} flag`} width="100" />

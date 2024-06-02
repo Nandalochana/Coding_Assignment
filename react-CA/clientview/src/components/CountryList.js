@@ -28,9 +28,9 @@ const CountryList = ({ onSelectCountry }) => {
             {loaded ? (
                 <div className="country-list">
                     {countries.map((country) => (
-                        <div key={country.country_code}>
+                        <div key={country.countryCode}>
                             <a href="#" onClick={() => onSelectCountry(country.name)}>
-                                {country.name}
+                               {country.name}:({country.countryCode})
                             </a>
                         </div>
                     ))}
