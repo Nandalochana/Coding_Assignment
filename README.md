@@ -7,7 +7,7 @@ This project implements a microservice that provides a list of countries and det
 - **REST API**:
   - `GET /countries/`: Fetches a list of all countries.
   - `GET /countries/{name}`: Fetches detailed information about a specific country.
-- **External Service Integration**: The country service fetches relevant information from an external service, for example, [CountriesNow](https://countriesnow.space/).
+- **External Service Integration**: The country service fetches relevant information from an external service, for example, [RestCountries](https://restcountries.eu/)
 
 ## Bonus Features
 
