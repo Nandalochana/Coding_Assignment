@@ -25,12 +25,12 @@ This project implements a microservice that provides a list of countries and det
 ### Installation
 
 1. **Clone the repository**:
-   git clone https://github.com/Nandalochana/Coding_Assignment.git
-   cd Coding_Assignment/assignment
+   - git clone https://github.com/Nandalochana/Coding_Assignment.git
+   - cd Coding_Assignment/assignment
 
 
-Build the project  : `mvn clean install`
-Run the application: `mvn spring-boot:run`
+2. Build the project  : `mvn clean install`
+3. Run the application: `mvn spring-boot:run`
 
 # Usage
 
